@@ -1,0 +1,15 @@
+{
+  "name": "speaker-signals-2",
+  "module": "build.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "7zip-bin": "^5.2.0",
+    "sharp": "^0.33.5"
+  }
+}
