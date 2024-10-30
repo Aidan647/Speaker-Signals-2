@@ -3,7 +3,8 @@
 	"version": "-",
 	"title": "Speaker Signals 2",
 	"author": "Aidan647",
-	"homepage": "todo",
+	"homepage": "https://github.com/Aidan647/Speaker-Signals-2",
 	"description": "More additional signals for speakers",
-	"factorio_version": "2.0"
+	"factorio_version": "2.0",
+	"dependencies": ["?space-age"]
 }
