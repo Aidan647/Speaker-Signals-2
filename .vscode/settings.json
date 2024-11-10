@@ -3,5 +3,9 @@
 		"factorio",
 		"modid",
 		"Roboport"
+	],
+	"Lua.diagnostics.globals": [
+		"mods",
+		"data"
 	]
 }
