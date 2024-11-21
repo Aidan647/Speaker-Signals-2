@@ -75,39 +75,16 @@ export function getIcons() {
 	return str
 }
 
-export async function processImages(
-	iconFolder: string,
-	iconNegativeFolder: string,
-	backgroundFolder: string
-) {
+export async function processImages(outputFolder: string, images: Set<string>) {
 	const pngOptions: sharp.PngOptions = {
 		compressionLevel: 9,
 		palette: true,
 		effort: 10,
 	}
-	const icons: string[] = []
-	const backgrounds: string[] = []
-	await fs.readdir("images/icons").then(async (files) => {
-		for (const file of files) {
-			const name = file.split(".")[0]
-			const image = sharp(path.join("images/icons", file))
-			await image.clone().png(pngOptions).toFile(path.join(iconFolder, file))
-			await image
-				.clone()
-				.negate({ alpha: false })
-				.png(pngOptions)
-				.toFile(path.join(iconNegativeFolder, file))
-			icons.push(name)
-		}
-	})
-	await fs.readdir("images/background").then(async (files) => {
-		let i = 0
-		for (const file of files) {
-			const name = file.split(".")[0]
-			await sharp(path.join("images/background", file))
-				.png(pngOptions)
-				.toFile(path.join(backgroundFolder, file))
-			backgrounds.push(name)
-		}
-	})
+	for (const image in images) {
+		await sharp("images/" + image)
+			.toColorspace("b-w")
+			.png(pngOptions)
+			.toFile(path.join(outputFolder, path.basename(image)))
+	}
 }
